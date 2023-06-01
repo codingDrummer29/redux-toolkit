@@ -1,20 +1,40 @@
-Project setup:
--   At your desired directory, run command "yarn create vite ." followed by "yarn" and "yarn dev". Choose for JS (not swc) for this project.
--   Delete all the unwanted files.
--   INSTALL: yarn add redux react-redux @reduxjs/toolkit sass sass-loader node-sass react-router-dom tailwindcss postcss autoprefixer axios
--   INSTALL: npx tailwindcss init -y
--   Update the content of tailwind.config.js file's content for "content: ["./src/**/*.{html,js,jsx}"],". SOURCE: https://tailwindcss.com/docs/content-configuration
--   Update vite.config.js for sass:
-        export default defineConfig({
-            ...
-            css: {
-                preprocessorOptions: {
-                sass: {},
+->  Project setup:
+    -   At your desired directory, run command "yarn create vite ." followed by "yarn" and "yarn dev". Choose for JS (not swc) for this project.
+    -   Delete all the unwanted files.
+    -   INSTALL: yarn add redux react-redux @reduxjs/toolkit sass sass-loader node-sass react-router-dom tailwindcss postcss autoprefixer axios
+    -   INSTALL: npx tailwindcss init -y
+    -   Update the content of tailwind.config.js file's content for "content: ["./src/**/*.{html,js,jsx}"],". SOURCE: https://tailwindcss.com/docs/content-configuration
+    -   Update vite.config.js for sass:
+            export default defineConfig({
+                ...
+                css: {
+                    preprocessorOptions: {
+                    sass: {},
+                    },
                 },
-            },
-        });
--   Include the tailwind header to your main.scss file aling with a test sass class
-        @tailwind base;
-        @tailwind components;
-        @tailwind utilities;
--   Import these to your main.jsx file and update App.jsx file content for tesing sass and tailwind.
+            });
+    -   Include the tailwind header to your main.scss file aling with a test sass class
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+    -   Import these to your main.jsx file and update App.jsx file content for tesing sass and tailwind.
+
+Folder structure got created.
+Needed files got created.
+
+->  API:
+    We are useing OMDB Api service for this project. SOURCE: https://www.omdbapi.com/
+    We need to have the api key, so build one bu heading towards to the "ApiKey" tab on the site, fill up the details and an api key will be emailed to you.
+
+Then we have just defined a constant file and exported the apikey.
+We have also created an movieApi.js file that imports axios and creates a base url for the required api calls in this project.
+We are now moving towards the routing, which is going to be defined inside 'App.jsx' file.
+
+->  Routing:
+    Basic routings done for component rendering. Flow is like follows:
+        Header
+        Home - Movie listing - Movie Details - 404
+        Footer
+
+->  Populating movie data:
+    -   Added api call at the Home.jsx useEffect
