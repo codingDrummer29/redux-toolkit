@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -8,8 +8,8 @@ import { fetchAsyncMovies } from "../store/features/movies/movieSlice";
 // import { addMovies } from "../store/features/movies/movieSlice";
 
 const Home = () => {
-  // const [search, setSearch] = useState("harry");
-  // const [type, setType] = useState("");
+  const [search, setSearch] = useState("harry");
+  const [type, setType] = useState("");
 
   const searchInput = useRef();
   const searchType = useRef();
@@ -18,7 +18,9 @@ const Home = () => {
 
   useEffect(() => {
     if (window.location.pathname === "/") Navigate("/movies");
-    // dispatch(fetchAsyncMovies({ search, type }));
+
+    if (search !== "" && type !== "")
+      dispatch(fetchAsyncMovies({ search, type }));
 
     // fetchMovies();
 
@@ -26,8 +28,7 @@ const Home = () => {
     //   setSearch("");
     //   setType("");
     // };
-  }, [dispatch, Navigate]);
-  // }, [dispatch, Navigate, search, type]);
+  }, [dispatch, Navigate, search, type]);
 
   // const fetchMovies = async () => {
   //   const response = await movieApi
@@ -44,6 +45,8 @@ const Home = () => {
 
     if (search.trim() !== "") {
       if (type.trim() !== "") {
+        setSearch(search);
+        setType(type);
         dispatch(fetchAsyncMovies({ search, type }));
       } else alert("Please choose a type");
     } else alert("Please enter a name");

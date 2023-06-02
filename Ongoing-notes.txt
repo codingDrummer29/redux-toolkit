@@ -115,4 +115,10 @@ So in the slice file,
             import { fetchAsyncMovies } from "../store/features/movies/movieSlice";
             dispatch(fetchAsyncMovies(<Props_if_any>));
 We can check the console for the different stages of the reducer in action.
-We have also applied a 'search' functionality based on what we have lelarned so far.
+We have also applied a 'search' functionality based on what we have lelarned so far. We are taking the name as input and type which are allowed by the api(See documentation of OMDB Api).
+Now we will populate data on the details page based on the card selection.
+For this we are again using the same approach of API call this time using async action creator from the begining. The initial value and store reducer handling are slightly modified for better understanding.
+We have used useparams() to get the selected item id from the query and rest is the same.
+When we move back an forth between listing and details page, we can see that the previous details are getting stored.
+To avoid this we are using a clean-up function, which will clear the redus when the details component unmounts.
+This cleanup action is not a async one, so we will define this one in the "reducers" property and then will export.

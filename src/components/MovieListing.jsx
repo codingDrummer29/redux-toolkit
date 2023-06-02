@@ -18,7 +18,7 @@ const MovieListing = () => {
         (item) => item.value == movies?.type
       );
       setDisplayType(_displayType[0].name);
-    }
+    } else console.log(movies);
   }, [movies]);
 
   const _renderCards = () => {
