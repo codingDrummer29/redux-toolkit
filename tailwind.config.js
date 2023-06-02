@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       height: {
-        body: "calc(100vh - 56px - 56px - 1px)",
+        body: "calc(100vh - 56px - 56px)",
       },
       minHeight: {
-        body: "calc(100vh - 56px - 56px - 1px)",
+        body: "calc(100vh - 56px - 56px)",
       },
     },
   },
