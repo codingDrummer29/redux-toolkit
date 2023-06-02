@@ -115,3 +115,4 @@ So in the slice file,
             import { fetchAsyncMovies } from "../store/features/movies/movieSlice";
             dispatch(fetchAsyncMovies(<Props_if_any>));
 We can check the console for the different stages of the reducer in action.
+We have also applied a 'search' functionality based on what we have lelarned so far.
