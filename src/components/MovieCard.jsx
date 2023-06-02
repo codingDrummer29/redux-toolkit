@@ -1,5 +1,34 @@
-const MovieCard = () => {
-  return <div>MovieCard</div>;
+/* eslint-disable react/prop-types */
+import { NavLink } from "react-router-dom";
+
+const MovieCard = ({ data }) => {
+  return (
+    <>
+      <div className="flex flex-col gap-2 w-full p-4">
+        <NavLink to={`/movies/${data?.imdbID}`}>
+          {/* ----- poster ----- */}
+          <div className="w-full h-80">
+            <img
+              className="h-full w-full"
+              src={data?.Poster}
+              alt={`${data?.Title}`}
+            />
+          </div>
+
+          {/* ----- Name ----- */}
+          <div className="font-medium">
+            <span>{data?.Title}</span>
+          </div>
+
+          {/* ----- Year ----- */}
+          <div className="text-sm">
+            <span className="font-medium">Year: </span>
+            <span className="">{data?.Year}</span>
+          </div>
+        </NavLink>
+      </div>
+    </>
+  );
 };
 
 export default MovieCard;

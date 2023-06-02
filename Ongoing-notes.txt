@@ -38,3 +38,59 @@ We are now moving towards the routing, which is going to be defined inside 'App.
 
 ->  Populating movie data:
     -   Added api call at the Home.jsx useEffect
+
+->  Implementing Redux:
+    SOURCE: https://redux-toolkit.js.org/tutorials/quick-start
+    -   Maintain the folder structure
+        src > store > store.js 
+                    + features > movies
+    -   Inside the store.js file, configure the store and use export the store to be included in the project.
+            import { configureStore } from "@reduxjs/toolkit";
+            export const store = configureStore({
+                reducer: {}
+            });
+    -   In main.jsx, import Provider, store and implement to App.
+            ...
+            import { Provider } from "react-redux";
+            import { store } from "./store/store";
+            ...
+            ...(
+            ...
+                <Provider store={store}>
+                    <App />
+                </Provider>
+            ...
+            )
+    -   Create the slice in features
+        -   import { createSlice } from "@reduxjs/toolkit";
+        -   Set initial value
+                const initialValues = {
+                    movies: [],
+                };
+        -   Create a slice:
+                const movieSlice = createSlice({
+                    name: "movieslice",
+                    initialState: initialValues,
+                    reducers: {
+                        addMovies: (state, { payload }) => {
+                            state.movies = payload;
+                        },
+                    },
+                });
+        -   export const { addMovies } = movieSlice.actions; // action to store data in redux
+            export const getAllMovies = (state) => state.movieslice.movies; // 
+            export default movieSlice.reducer; // Reducer to pass in in the store
+    -   
+    -   In Home.jsx we are getting the API response. There,
+        1.  import { useDispatch } from "react-redux";
+        2.  import { addMovies } from "../store/features/movies/movieSlice"; // action
+        3.  const dispatch = useDispatch();
+        4.  dispatch(addMovies(response.data.Search)); // stores data in redux
+With these the data will get stored inside the redux. 
+Now we need to access the data and populate list.
+Now er will update the MovieListing.jsx file.
+    -   Populating redux data:
+        1.  import { useSelector } from "react-redux"; // This will select the state reducer data
+        2.  import { getAllMovies } from "../store/features/movies/movieSlice"; // This has access of a particular state value, in this case 'movies' from 'movieSlice'.
+        3.  const movies = useSelector(getAllMovies); // movies will have the reducer value
+Based on this we are populating some cards. These cards will be redirected to the details component.

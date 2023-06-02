@@ -6,6 +6,9 @@ export default {
       height: {
         body: "calc(100vh - 56px - 56px - 1px)",
       },
+      minHeight: {
+        body: "calc(100vh - 56px - 56px - 1px)",
+      },
     },
   },
   plugins: [],
