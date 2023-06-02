@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Loader from "./pages/Loader";
 const Home = lazy(() => import("./pages/Home"));
 const FourZeroFour = lazy(() => import("./pages/FourZeroFour"));
 const MovieDetails = lazy(() => import("./components/MovieDetails"));
@@ -14,7 +15,7 @@ const App = () => {
       <Router>
         <Header />
 
-        <Suspense fallback={"Loading..."}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" exact element={<Home />}>
               <Route path="movies" element={<Movies />} />

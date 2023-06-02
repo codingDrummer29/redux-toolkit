@@ -16,7 +16,7 @@ const MovieCard = ({ data }) => {
           </div>
 
           {/* ----- Name ----- */}
-          <div className="font-medium px-4">
+          <div className="font-medium p-4">
             <span>{data?.Title}</span>
           </div>
 

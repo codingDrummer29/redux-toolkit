@@ -94,3 +94,24 @@ Now er will update the MovieListing.jsx file.
         2.  import { getAllMovies } from "../store/features/movies/movieSlice"; // This has access of a particular state value, in this case 'movies' from 'movieSlice'.
         3.  const movies = useSelector(getAllMovies); // movies will have the reducer value
 Based on this we are populating some cards. These cards will be redirected to the details component.
+In the mean time we will understand how to implement middleware with redux toolkit.
+We were fetching the API in the home component and storing the data in redux till now with a synchronus action creator. But this can be upgraded with and asynchronus action creator in the slice itself with middleware thunk.
+So in the slice file,
+    -   import { ... createAsyncThunk } from "@reduxjs/toolkit";
+    -   Create an export function with createAsyncThunk. The function takes 3 paramters.
+        1.  Thunk name => convention is <Name_of_the_slice>/<Async_function_name>
+        2.  Async function => With await call that returns the value. We don't need to dispatch like we did in the Home.jsx component.
+        3.  An object => Not used till now.
+    -   This thunk needs to be defined in the slice to access the store, and this will get defined as "extraReducers" property like follows.
+            {
+                [fetchAsyncMovies.pending]: () => console.log("Fetching..."),
+                [fetchAsyncMovies.fulfilled]: (state, { payload }) => {
+                    console.log("Fetched successfully.");
+                    return { ...state, movies: payload };
+                },
+                [fetchAsyncMovies.rejected]: () => console.log("Fetch call rejected."),
+            }
+    -   And in the Home.jsx file we'll remove the previos synchronus action creator with a dispatch of this asynchronus action creator by importing it.
+            import { fetchAsyncMovies } from "../store/features/movies/movieSlice";
+            dispatch(fetchAsyncMovies(<Props_if_any>));
+We can check the console for the different stages of the reducer in action.

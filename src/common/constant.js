@@ -3,7 +3,7 @@ export const BASE_URL = "http://www.omdbapi.com";
 export const POSTER_URL = "http://img.omdbapi.com";
 
 export const SEARCH_TYPES = [
-  { name: "Movie", label: "Movie", value: "movie" },
+  { name: "Movies", label: "Movie", value: "movie" },
   { name: "Series", label: "Series", value: "series" },
   { name: "Episode", label: "Episode", value: "episode" },
 ];
