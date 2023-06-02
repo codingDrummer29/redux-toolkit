@@ -1,3 +1,13 @@
+This is a demo project to learn and understand the principles of redux-toolkit. A very basic version of the topic has been covered in a step-by-step manner. We have used all the latest versions of the packages available upto date.
+We have used Node v18.16.0 LTS, with "yarn" as a package manager. The boiler plate code has been created via "Vite". We have used Tailwind CSS with SASS configuration. And we have also used React Router v6 for our routings.
+Mordern development standards with production level folder structures has been used.
+We have not hosted this project as this is a very basic project for a demo purpose.
+If you close this project, just make sure to have Node version >18, and run the following commands:
+- yarn
+- yarn dev
+Go through the steps one by one and you will understand the flow. All the best.
+
+
 ->  Project setup:
     -   At your desired directory, run command "yarn create vite ." followed by "yarn" and "yarn dev". Choose for JS (not swc) for this project.
     -   Delete all the unwanted files.
