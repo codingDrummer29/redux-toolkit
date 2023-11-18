@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+
+// redux
+import { SEARCH_TYPES } from "../common/constant";
 import { getAllMovies } from "../store/features/movies/movieSlice";
 
-import { SEARCH_TYPES } from "../common/constant";
-
+// components
 import MovieCard from "./MovieCard";
 
 const MovieListing = () => {
   const [displayType, setDisplayType] = useState("");
 
   const movies = useSelector(getAllMovies);
-  // useSlector is accessing the redux will return the state value that is defined for the getAllMovies
 
   useEffect(() => {
     if (movies && movies?.type) {
@@ -25,8 +26,10 @@ const MovieListing = () => {
     if (!movies?.data?.length)
       return (
         <>
-          <div className="">
-            <span>Sorry, No movies found.</span>
+          <div className="h-full flex justify-center items-center">
+            <i>
+              Type something, choose a gener and hit <b>Search</b>
+            </i>
           </div>
         </>
       );

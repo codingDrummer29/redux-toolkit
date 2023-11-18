@@ -46,6 +46,9 @@ const movieSlice = createSlice({
     clearSelectedDetails: (state) => {
       state.details = null;
     },
+    clearAllMovies: (state) => {
+      state.v2 = initialValues.v2;
+    },
   },
   extraReducers: {
     [fetchAsyncMovies.pending]: () => console.log("Fetching..."),
@@ -65,7 +68,8 @@ const movieSlice = createSlice({
   },
 });
 
-export const { addMovies, clearSelectedDetails } = movieSlice.actions;
+export const { addMovies, clearSelectedDetails, clearAllMovies } =
+  movieSlice.actions;
 export const getAllMovies = (state) => state.movieSlice.v2;
 export const getMovieShowDetails = (state) => state.movieSlice.details;
 export default movieSlice.reducer;
